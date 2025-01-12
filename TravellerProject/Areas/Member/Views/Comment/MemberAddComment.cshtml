@@ -1,0 +1,55 @@
+﻿@model EntityLayer.Concrete.Comment
+@{
+    ViewData["Title"] = "MemberAddComment";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h1>Add Comment</h1>
+
+@* @if (User.Identity.IsAuthenticated)
+{
+    <div class="leave-comment-form mt-5" id="reply">
+        <h4 class="side-title mb-2">Leave a Reply</h4>
+        <p class="mb-4">
+            Required fields are marked*.
+        </p>
+        <form method="post" asp-action="MemberAddComment" asp-controller="Comment">
+            <input type="hidden" name="DestinationID" value="@ViewBag.destID" />
+            <input type="hidden" name="AppUserID" value="@ViewBag.userID" />
+            <div class="form-group">
+                <textarea name="CommentContent" class="form-control" placeholder="Your Comment*" required=""
+                          spellcheck="false"></textarea>
+            </div>
+            <div class="submit text-right">
+                <button class="btn btn-style btn-primary" type="submit" id="btnsave">Post Comment</button>
+            </div>
+        </form>
+    </div>
+}
+else
+{
+    <h2>You need to sign in to post a comment</h2>
+} *@
+
+
+<form method="post" asp-action="MemberAddComment" asp-controller="Comment">
+    <input type="hidden" name="AppUserID" value="@ViewBag.userID" />
+    <div class="form-group">
+        <label for="DestinationID">Select Destination</label>
+        <select name="DestinationID" class="form-control" required>
+            <option value="" disabled selected>Choose a destination</option>
+            @foreach (var destination in ViewBag.Destinations)
+            {
+                <option value="@destination.DestinationID">@destination.City</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="CommentContent">Your Comment</label>
+        <textarea name="CommentContent" class="form-control" placeholder="Your Comment*" required></textarea>
+    </div>
+    <div class="submit text-right">
+        <button class="btn btn-primary" type="submit">Post Comment</button>
+    </div>
+</form>
+

@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container" style="max-width: 600px;">
+    <h2 class="my-4 text-center">PDF Report Center</h2>
+    <p class="text-center">Generate and download PDF reports:</p>
+
+    <div class="d-grid gap-3 mt-4 text-center">
+        <a href="/PdfReport/StaticPdfReport" class="btn btn-info text-white btn-lg">Generate Static PDF Report</a>
+        <a href="/PdfReport/StaticCustomerReport" class="btn btn-info text-white btn-lg">Generate Static Customer PDF Report</a>
+    </div>
+
+    <p class="text-center mt-3">
+        Click the buttons above to generate and download PDF reports summarizing reservation details such as city, accommodation duration, price, and capacity.
+    </p>
+</div>
+

@@ -1,0 +1,155 @@
+﻿@using EntityLayer.Concrete
+@model List<Reservation>
+@{
+    ViewData["Title"] = "MyCurrentReservation";
+    //Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+@* <h1 style="margin-bottom: 20px;">Current Reservation</h1>
+<div class="container">
+    <!-- Header Row -->
+    <div class="row border-bottom py-2 bg-dark text-white" style="font-weight: 500;">
+        <div class="col-md-2 d-flex align-items-center">Reservation ID</div>
+        <div class="col-md-3 d-flex align-items-center">Location</div>
+        <div class="col-md-2 d-flex align-items-center">Person Count</div>
+        <div class="col-md-3 d-flex align-items-center">Reservation Date</div>
+        <div class="col-md-2 d-flex align-items-center">Status</div>
+    </div>
+
+    <!-- Data Rows -->
+    @foreach (var item in Model)
+    {
+        <div class="row py-2 border-bottom" style="font-weight: 400;">
+            <div class="col-md-2 d-flex align-items-center">@item.ReservationId</div>
+            <div class="col-md-3 d-flex align-items-center">@item.Destination.City</div>
+            <div class="col-md-2 d-flex align-items-center">@item.PersonCount</div>
+            <div class="col-md-3 d-flex align-items-center">@item.ReservationDate.ToString("yyyy-MM-dd")</div>
+            <div class="col-md-2 d-flex align-items-center">@item.Status</div>
+        </div>
+    }
+</div> *@
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 style="margin-bottom: 20px;">Current Reservation</h1>
+
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <p class="card-text">You can track your current reservation </p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Reservation ID</th>
+                                    <th>Location</th>
+                                    <th>Person Count</th>
+                                    <th>Reservation Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ReservationId</td>
+                                        <td>@item.Destination.City</td>
+                                        <td>@item.PersonCount</td>
+                                        <td>@item.ReservationDate.ToString("yyyy-MM-dd")</td>
+                                        <td>@item.Status</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow-sm border-0 rounded-3" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: #ffffff;">
+            <div class="card-header d-flex justify-content-between align-items-center" style="border-bottom: 1px solid #ffffff;">
+                <h2 class="mb-0">Current Reservation</h2>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a href="#" data-action="collapse" class="icon-link"><i class="ft-minus"></i></a></li>
+                        <li><a href="#" data-action="reload" class="icon-link"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a href="#" data-action="expand" class="icon-link"><i class="ft-maximize"></i></a></li>
+                        <li><a href="#" data-action="close" class="icon-link"><i class="ft-x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body" style="background-color: #f9f9f9; color: #343a40;">
+                    <p class="card-text">You can track your current reservations below:</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead style="background: linear-gradient(to right, #6a11cb, #2575fc); color: #ffffff;">
+                                <tr>
+                                    <th>Reservation ID</th>
+                                    <th>Location</th>
+                                    <th>Person Count</th>
+                                    <th>Reservation Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null && Model.Any())
+                                {
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr style="background-color: #f9f9f9; color: #343a40;">
+                                            <td><strong>@item.ReservationId</strong></td>
+                                            <td>@item.Destination.City</td>
+                                            <td>@item.PersonCount</td>
+                                            <td>@item.ReservationDate.ToString("yyyy-MM-dd")</td>
+                                            <td>
+                                                <span class="badge @(item.Status == "Approved" ? "bg-success" : "bg-warning")">
+                                                    @item.Status
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr style="background-color: #e9e9e9; color: #6c757d;">
+                                        <td colspan="5" class="text-center">No reservations found.</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

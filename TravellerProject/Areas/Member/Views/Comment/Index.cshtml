@@ -1,0 +1,54 @@
+﻿@model List<EntityLayer.Concrete.Comment>
+@{
+    ViewData["Title"] = "Comments";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="text-center">
+        <h1 style="color: #4F4FCB; font-weight: bold;">User Comments</h1>
+    </div>
+
+    <div class="table-responsive mt-4">
+        <table class="table table-hover" style="background-color: #F8F9FA; border-radius: 8px;">
+            <thead style="background: linear-gradient(90deg, #4F4FCB, #7D50E7); color: white;">
+                <tr>
+                    <th scope="col">User</th>
+                    <th scope="col">Comment</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Destination</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count > 0)
+                {
+                    @foreach (var comment in Model)
+                    {
+                        <tr>
+                            <td>@comment.AppUser?.UserName</td> <!-- Kullanıcı adı -->
+                            <td>@comment.CommentContent</td> <!-- Yorum içeriği -->
+                            <td>@comment.CommentDate.ToShortDateString()</td> <!-- Yorum tarihi -->
+                            <td>@comment.Destination?.City</td> <!-- Destination City -->
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4" class="text-center" style="color: #7D50E7; font-weight: bold;">
+                            No comments available.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="/Member/Comment/MemberAddComment"
+           class="btn btn-lg"
+           style="background: linear-gradient(90deg, #6C757D, #ADB5BD); color: white; font-weight: bold; padding: 12px 24px; border-radius: 8px;">
+            Add Comment
+        </a>
+    </div>
+</div>

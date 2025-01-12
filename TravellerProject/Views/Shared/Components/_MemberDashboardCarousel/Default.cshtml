@@ -1,0 +1,50 @@
+﻿@model List<Destination>
+<div class="col-xl-4 col-lg-12">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <h4 class="card-title">Popular Destinations</h4>
+                <h6 class="card-subtitle text-muted">Discover the most popular destinations</h6>
+            </div>
+            <div id="destination-carousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    @for (var i = 0; i < Model.Count; i++)
+                    {
+                        <li data-target="#destination-carousel" data-slide-to="@i" class="@((i == 0) ? "active" : "")"></li>
+                    }
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    @foreach (var destination in Model)
+                    {
+                        <div class="carousel-item @((Model.IndexOf(destination) == 0) ? "active" : "")">
+                            <img src="@destination.Image" class="d-block w-100" alt="@destination.City">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>@destination.City</h5>
+                                <p>@destination.Description</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#destination-carousel" role="button" data-slide="prev">
+                    <span class="la la-angle-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#destination-carousel" role="button" data-slide="next">
+                    <span class="la la-angle-right icon-next" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <div class="card-body">
+                <a href="#" class="card-link">View All Destinations</a>
+                <a href="#" class="card-link">Learn More</a>
+            </div>
+        </div>
+        <div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted">
+            <span class="float-left">Last updated: 2 days ago</span>
+            <span class="tags float-right">
+                <span class="badge badge-pill badge-primary">Travel</span>
+                <span class="badge badge-pill badge-success">Adventure</span>
+            </span>
+        </div>
+    </div>
+</div>

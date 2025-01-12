@@ -1,0 +1,90 @@
+﻿@model List<Destination>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h1>Last Destinations</h1>
+
+
+<div class="col-12 mt-4">
+    <div class="card mb-4">
+        <div class="card-header pb-0 p-3">
+            <h6 class="mb-1">Destinations</h6>
+            <p class="text-sm">Discover New Places</p>
+        </div>
+        <div class="card-body p-3">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                        <div class="card card-blog card-plain h-100 d-flex flex-column">
+                            <div class="position-relative">
+                                <a class="d-block shadow-xl border-radius-xl">
+                                    <img src="@item.Image" alt="Destination Image" class="img-fluid shadow border-radius-xl destination-img">
+                                </a>
+                            </div>
+                            <div class="card-body px-1 pb-0 flex-grow-1 d-flex flex-column">
+                                <p class="text-gradient text-dark mb-2 text-sm">
+                                    @item.DayNight - $@item.Price
+                                </p>
+                                <a href="javascript:;">
+                                    <h5>@item.City</h5>
+                                </a>
+                                <p class="mb-4 text-sm flex-grow-1">
+                                    @(item.Description.Length > 100 ? item.Description.Substring(0, 100) + "..." : item.Description)
+                                </p>
+                                <div class="mt-auto d-flex align-items-center justify-content-between">
+                                    <a href="/Destination/DestinationDetails/@item.DestinationID/"
+                                       class="btn btn-outline-primary btn-sm mb-0">
+                                        Explore More
+                                    </a>
+                                    <div class="avatar-group mt-0">
+                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" title="Elena Morison">
+                                            <img src="~/soft-ui-dashboard/assets/img/team-1.jpg" alt="Team 1">
+                                        </a>
+                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" title="Ryan Milly">
+                                            <img src="~/soft-ui-dashboard/assets/img/team-2.jpg" alt="Team 2">
+                                        </a>
+                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" title="Nick Daniel">
+                                            <img src="~/soft-ui-dashboard/assets/img/team-3.jpg" alt="Team 3">
+                                        </a>
+                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" title="Peterson">
+                                            <img src="~/soft-ui-dashboard/assets/img/team-4.jpg" alt="Team 4">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card-blog .destination-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .card-blog {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .card-body {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mt-auto {
+        margin-top: auto;
+    }
+</style>

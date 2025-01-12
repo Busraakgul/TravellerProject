@@ -1,0 +1,185 @@
+﻿@*  <div class="best-rooms py-5">
+    <div class="container py-md-5">
+        <div class="ban-content-inf row">
+            <div class="maghny-gd-1 col-lg-6">
+                <div class="maghny-grid">
+                    <figure class="effect-lily border-radius  m-0">
+                        <img class="img-fluid" src="~/Traversal-Liberty/assets/images/g10.jpg" alt="" />
+                        <figcaption>
+                            <div>
+                                <h4>3Days, 4 Nights</h4>
+                                <p>From 1720$ </p>
+                            </div>
+
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="maghny-gd-1 col-lg-6 mt-lg-0 mt-4">
+                <div class="row">
+                    <div class="maghny-gd-1 col-6">
+                        <div class="maghny-grid">
+                            <figure class="effect-lily border-radius">
+                                <img class="img-fluid" src="~/Traversal-Liberty/assets/images/g9.jpg" alt="" />
+                                <figcaption>
+                                    <div>
+                                        <h4>3Days, 4 Nights</h4>
+                                        <p>From 1220$ </p>
+                                    </div>
+
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="maghny-gd-1 col-6">
+                        <div class="maghny-grid">
+                            <figure class="effect-lily border-radius">
+                                <img class="img-fluid" src="~/Traversal-Liberty/assets/images/g8.jpg" alt="" />
+                                <figcaption>
+                                    <div>
+                                        <h4>3Days, 4 Nights</h4>
+                                        <p>From 1620$ </p>
+                                    </div>
+
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="maghny-gd-1 col-6 mt-4">
+                        <div class="maghny-grid">
+                            <figure class="effect-lily border-radius">
+                                <img class="img-fluid" src="~/Traversal-Liberty/assets/images/g7.jpg" alt="" />
+                                <figcaption>
+                                    <div>
+                                        <h4>3Days, 4 Nights</h4>
+                                        <p>From 1820$ </p>
+                                    </div>
+
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="maghny-gd-1 col-6 mt-4">
+                        <div class="maghny-grid">
+                            <figure class="effect-lily border-radius">
+                                <img class="img-fluid" src="~/Traversal-Liberty/assets/images/g6.jpg" alt="" />
+                                <figcaption>
+                                    <div>
+                                        <h4>3Days, 4 Nights</h4>
+                                        <p>From 1520$ </p>
+                                    </div>
+
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+ *@
+
+
+
+@* @model IEnumerable<EntityLayer.Concrete.Feature>
+
+<div class="best-rooms py-5">
+    <div class="container py-md-5">
+        <div class="ban-content-inf row">
+            @if (Model != null && Model.Any())
+            {
+                var features = Model.ToList();
+                <!-- İlk resim için büyük boyutlu div -->
+                <div class="maghny-gd-1 col-lg-6">
+                    <div class="maghny-grid">
+                        <figure class="effect-lily border-radius m-0">
+                            <img class="img-fluid" src="@features[0].Image" alt="" />
+                            <figcaption>
+                                <div>
+                                    <h4>@features[0].Title</h4>
+                                    <p>From @features[0].Description</p>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Diğer resimler için küçük boyutlu divler -->
+                <div class="maghny-gd-1 col-lg-6 mt-lg-0 mt-4">
+                    <div class="row">
+                        @for (int i = 1; i < features.Count; i++)
+                        {
+                            <div class="maghny-gd-1 col-6 @((i == 1 || i == 2) ? "mt-0" : "mt-4")">
+                                <div class="maghny-grid">
+                                    <figure class="effect-lily border-radius">
+                                        <img class="img-fluid" src="@features[i].Image" alt="" />
+                                        <figcaption>
+                                            <div>
+                                                <h4>@features[i].Title</h4>
+                                                <p>From @features[i].Description</p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div> *@
+
+
+@model List<EntityLayer.Concrete.Feature>
+<div class="best-rooms py-5">
+    <div class="container py-md-5">
+        <div class="ban-content-inf row">
+            @if (Model != null && Model.Count > 0)
+            {
+                <!-- İlk Büyük Görsel -->
+                <div class="maghny-gd-1 col-lg-6">
+                    <div class="maghny-grid">
+                        <figure class="effect-lily border-radius m-0">
+                            <img class="img-fluid" src="@Model[0].Image" alt="@Model[0].Title" />
+                            <figcaption>
+                                <div>
+                                    <h4>@Model[0].Title</h4>
+                                    <p>@Model[0].Description</p>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Diğer Küçük Görseller -->
+                <div class="maghny-gd-1 col-lg-6 mt-lg-0 mt-4">
+                    <div class="row">
+                        @for (int i = 1; i < Model.Count && i <= 4; i++) // Sadece 4 küçük görsel gösterilecek
+                        {
+                            <div class="maghny-gd-1 col-6 @(i > 2 ? "mt-4" : "")">
+                                <div class="maghny-grid">
+                                    <figure class="effect-lily border-radius">
+                                        <img class="img-fluid" src="@Model[i].Image" alt="@Model[i].Title" />
+                                        <figcaption>
+                                            <div>
+                                                <h4>@Model[i].Title</h4>
+                                                <p>@Model[i].Description</p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+

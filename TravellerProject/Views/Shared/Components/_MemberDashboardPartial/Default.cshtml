@@ -1,0 +1,30 @@
+﻿@model List<Destination>
+@{
+    var sortedDestinations = Model.OrderByDescending(d => d.Reservations?.Count ?? 0).ToList();
+    int rank = 1;
+}
+
+<div class="row">
+    @foreach (var destination in sortedDestinations)
+    {
+        <div class="col-xl-4 col-lg-6 col-md-12">
+            <div class="card pull-up ecom-card-1 bg-white" style="height: 320px;">
+                <div class="card-content ecom-card2 text-center d-flex flex-column justify-content-between" style="padding: 12px;">
+                    <div>
+                        <div class="ranking-title" style="font-size: 1.2rem; font-weight: bold; margin-bottom: 12px;">
+                            @rank<span>@(rank == 1 ? "st" : rank == 2 ? "nd" : rank == 3 ? "rd" : "th")</span> Most Reserved Destination
+                        </div>
+                        <div class="image-container" style="height: 170px; overflow: hidden; border-radius: 8px; margin-bottom: 12px;">
+                            <img src="@destination.Image" alt="@destination.City" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="mb-1" style="font-size: 1.1rem; font-weight: 700;">@destination.City</h5>
+                        <p class="text-muted" style="margin: 0; font-size: 1rem;">@(destination.Reservations?.Count ?? 0) Reservations</p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        rank++;
+    }
+</div>

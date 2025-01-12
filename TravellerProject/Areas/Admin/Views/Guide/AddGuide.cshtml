@@ -1,0 +1,62 @@
+﻿@model EntityLayer.Concrete.Guide
+
+@{
+    ViewData["Title"] = "AddGuide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .form-group {
+        margin-bottom: 1.5rem; 
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 0.4rem; /* Label ile input arası */
+        font-weight: bold;
+    }
+    .form-control {
+        padding: 0.5rem 0.75rem;
+    }
+</style>
+
+<h2>New Guide Registration Page</h2>
+<br />
+<form method="post" novalidate>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, "Name Surname", new { @class = "control-label" })
+        <input type="text" asp-for="Name" class="form-control" placeholder="Enter your name" required />
+@*         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+ *@        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Image, "Main Image", new { @class = "control-label" })
+        <input type="text" asp-for="Image" class="form-control" placeholder="Put an image" required />
+@*         @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
+ *@        <span asp-validation-for="Image" class="text-danger"></span>
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.InstagramUrl, "Instagram Url", new { @class = "control-label" })
+        <input type="text" asp-for="InstagramUrl" class="form-control" placeholder="" required />
+        @Html.ValidationMessageFor(m => m.InstagramUrl, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.TwitterUrl, "Twitter Url", new { @class = "control-label" })
+        <input type="text" asp-for="TwitterUrl" class="form-control" placeholder="" required />
+        @Html.ValidationMessageFor(m => m.TwitterUrl, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description, "Description", new { @class = "control-label" })
+        <textarea asp-for="Description" class="form-control" rows="3" placeholder="Add detail" required></textarea>
+@*         @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+ *@        <span asp-validation-for="Description" class="text-danger"></span>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary custom-btn">Add</button>
+
+</form>

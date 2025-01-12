@@ -1,0 +1,194 @@
+﻿@model TravellerProject.Models.UserRegisterViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sign Up | Traveller's Path</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="SignUp || Traveller's Path" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('https://images.ctfassets.net/wqdtr8q8192q/28KbLkjsWV6G0MV11VfXmE/a2d73238229bfda923152ed30aa905ec/iStock-1353245759.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Hafif siyah katman */
+            z-index: -1;
+        }
+
+        .form-content {
+            display: flex;
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .form-left {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .form-right {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.8);
+            color: white; /* Genel olarak sağ bölümdeki metinler beyaz */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .form-right h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: white; /* Başlık beyaz */
+        }
+
+        .form-right p {
+            font-size: 1rem;
+            color: white; /* Paragraf metni beyaz */
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        button {
+            background: #000;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        .container {
+            display: block;
+            margin: 10px 0;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .container a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .copy-right {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="form-content">
+            <div class="form-left">
+                <h2>Join Traveller's Path</h2>
+                <p>Create Your Account, It's Free and Quick!</p>
+                <form method="post" class="signin-form">
+                    <label>Name</label>
+                    <input type="text" asp-for="Name" placeholder="John" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+
+                    <label>Surname</label>
+                    <input type="text" asp-for="Surname" placeholder="Doe" />
+                    <span asp-validation-for="Surname" class="text-danger"></span>
+
+                    <label>Username</label>
+                    <input type="text" asp-for="Username" placeholder="johndoe123" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+
+                    <label>Email</label>
+                    <input type="email" asp-for="Mail" placeholder="example@email.com" />
+                    <span asp-validation-for="Mail" class="text-danger"></span>
+
+                    <label>Password</label>
+                    <input type="password" asp-for="Password" placeholder="********" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+                    <label>Retype Password</label>
+                    <input type="password" asp-for="ConfirmPassword" placeholder="********" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                    <div class="container">
+                        I agree to <a href="#">Terms & Privacy</a>
+                        <input type="checkbox">
+                    </div>
+                    <button type="submit">Create Account</button>
+                </form>
+                <div class="copy-right">
+                    <p>© @DateTime.Now.Year Traveller's Path. All Rights Reserved.</p>
+                </div>
+            </div>
+            <div class="form-right">
+                <div>
+                    <h3>Start Your Journey</h3>
+                    <p>Connect with travelers and explore unforgettable adventures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+

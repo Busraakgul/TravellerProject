@@ -1,0 +1,102 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\sneat-1.0.0\.github\workflows\handle-new-issue-comment.yml" />
+    <None Include="wwwroot\sneat-1.0.0\.github\workflows\handle-new-issue.yml" />
+    <None Include="wwwroot\sneat-1.0.0\.github\workflows\issue-staler.yml" />
+    <None Include="wwwroot\Traversal-Liberty\assets\css\style-liberty.css" />
+    <None Include="wwwroot\Traversal-Liberty\assets\fonts\fontawesome-webfont.eot" />
+    <None Include="wwwroot\Traversal-Liberty\assets\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\Traversal-Liberty\assets\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\Traversal-Liberty\assets\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\Traversal-Liberty\assets\fonts\FontAwesome.otf" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\banner1.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\banner2.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\banner3.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\banner4.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\c1.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\c2.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\c3.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\c4.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\close.png" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\date.png" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\dots.png" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\down.png" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\g1.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\g10.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\g2.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\g3.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\g4.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\g5.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\g6.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\g7.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\g8.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\g9.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\img-sprite.png" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\team1.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\team2.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\team3.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\images\team4.jpg" />
+    <None Include="wwwroot\Traversal-Liberty\assets\js\all.js" />
+    <None Include="wwwroot\Traversal-Liberty\assets\js\app.js" />
+    <None Include="wwwroot\Traversal-Liberty\assets\js\bootstrap.min.js" />
+    <None Include="wwwroot\Traversal-Liberty\assets\js\jquery-3.3.1.min.js" />
+    <None Include="wwwroot\Traversal-Liberty\assets\js\jquery.countup.js" />
+    <None Include="wwwroot\Traversal-Liberty\assets\js\jquery.min.js" />
+    <None Include="wwwroot\Traversal-Liberty\assets\js\jquery.waypoints.min.js" />
+    <None Include="wwwroot\Traversal-Liberty\assets\js\jquery.zoomslider.min.js" />
+    <None Include="wwwroot\Traversal-Liberty\assets\js\lightbox-plus-jquery.min.js" />
+    <None Include="wwwroot\Traversal-Liberty\assets\js\main.js" />
+    <None Include="wwwroot\Traversal-Liberty\assets\js\modernizr-2.6.2.min.js" />
+    <None Include="wwwroot\Traversal-Liberty\assets\js\owl.carousel.js" />
+    <None Include="wwwroot\Traversal-Liberty\assets\js\popper.min.js" />
+    <None Include="wwwroot\Traversal-Liberty\assets\js\theme-change.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="ClosedXML" Version="0.104.1" />
+    <PackageReference Include="EPPlus" Version="7.4.2" />
+    <PackageReference Include="FluentValidation" Version="11.10.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="iTextSharp.LGPLv2.Core" Version="3.4.22" />
+    <PackageReference Include="MailKit" Version="4.8.0" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+    <ProjectReference Include="..\EntityLayer\EntityLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Admin\" />
+    <Folder Include="Areas\Member\Data\" />
+    <Folder Include="wwwroot\pdfreports\" />
+    <Folder Include="wwwroot\userimages\" />
+  </ItemGroup>
+
+</Project>

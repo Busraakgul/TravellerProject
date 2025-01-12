@@ -1,0 +1,77 @@
+﻿ ﻿@using TravellerProject.Areas.Admin.Models
+@model IEnumerable<BookingHotelSearchViewModel.Result>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+    double score;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>City Searched: Germany/Berlin</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Hotel Name</th>
+            <th>Hotel Rating</th>
+            <th>Reviews</th>
+            <th>Review Comments</th>
+            <th>Price</th>
+            <th>Check-in/Check-out</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.name</td>
+
+                @{
+                    score = double.Parse(item.reviewScore.ToString()) / 10;
+                }
+                <td>
+                    @score
+                    <span class="badge badge-info">@item.reviewScoreWord</span>
+                </td>
+                <td>
+                    @item.reviewCount reviews
+                </td>
+                <td>@item.reviewScoreWord</td>
+
+                <td>
+                    @if (item.priceBreakdown != null)
+                    {
+                        <span>@item.priceBreakdown.grossPrice.value @item.currency</span>
+                        @if (item.priceBreakdown.strikethroughPrice != null)
+                        {
+                            <span class="text-decoration-line-through">@item.priceBreakdown.strikethroughPrice.value @item.currency</span>
+                        }
+                    }
+                </td>
+
+                <td>
+                    @if (item.checkin != null && item.checkout != null)
+                    {
+                        <div>
+                            <strong>Check-in:</strong> @item.checkin.fromTime - @item.checkin.untilTime <br>
+                            <strong>Check-out:</strong> @item.checkout.fromTime - @item.checkout.untilTime
+                        </div>
+                    }
+                </td>
+
+                <td>
+                    <a href="@Url.Action("Details", "BookingHotelSearch", new { id = item.id })" class="btn btn-outline-dark">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

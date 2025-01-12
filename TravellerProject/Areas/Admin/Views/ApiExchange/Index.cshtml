@@ -1,0 +1,75 @@
+﻿@* @model IEnumerable<BookingExchangeViewModel2.Exchange_Rates>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>API Booking Exchange Informations</h1>
+
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>Currency</th>
+        <th>Exchange Rate</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <th>@item.currency</th>
+            <td>@item.exchange_rate_buy</td>
+        </tr>
+    }
+</table>
+
+ *@
+
+
+ @model IEnumerable<BookingExchangeViewModel2.Exchange_Rates>
+@{
+    ViewData["Title"] = "Booking Exchange Rates";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container my-4">
+    <h1 class="text-center">API Booking Exchange Information</h1>
+    <p class="text-center text-muted">Base Currency: <b>@ViewBag.BaseCurrency</b> | Last Updated: <b>@ViewBag.LastUpdated</b></p>
+
+    <div class="row">
+        <!-- Table Section -->
+        <div class="col-md-8">
+            <h4>Exchange Rates</h4>
+            <table class="table table-bordered table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th class="text-center">Currency</th>
+                        <th class="text-center">Exchange Rate (Buy)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@item.currency</td>
+                            <td class="text-center">@item.exchange_rate_buy</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Insights Section -->
+        <div class="col-md-4">
+            <h4>Insights</h4>
+            <div class="card">
+                <div class="card-body">
+                    <ul>
+                        <li>Total Currencies: <b>@Model.Count()</b></li>
+                        <li>Highest Exchange Rate: <b>@Model.Max(x => x.exchange_rate_buy)</b></li>
+                        <li>Lowest Exchange Rate: <b>@Model.Min(x => x.exchange_rate_buy)</b></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

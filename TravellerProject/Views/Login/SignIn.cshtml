@@ -1,0 +1,236 @@
+﻿@* @using TravellerProject.Models
+@model UserSignInViewModel
+
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Traveller | SignIn Page</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="~/Login_v1/images/icons/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="~/Login_v1/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="~/Login_v1/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="~/Login_v1/vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="~/Login_v1/vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="~/Login_v1/vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="~/Login_v1/css/util.css">
+	<link rel="stylesheet" type="text/css" href="~/Login_v1/css/main.css">
+</head>
+<body>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="~/Login_v1/images/img-01.png" alt="IMG">
+				</div>
+
+				<form class="login100-form validate-form" method="post">
+					<span class="login100-form-title">
+						Login
+					</span>
+					<div class="wrap-input100 validate-input" data-validate="Username">
+						<input class="input100" type="text" asp-for="username" placeholder="Username">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input" data-validate="Password">
+						<input class="input100" type="password" asp-for="password" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+					<div class="text-center p-t-136">
+						<a class="txt2" href="/Login/SignUp">
+							Create your Account
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="~/Login_v1/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="~/Login_v1/vendor/bootstrap/js/popper.js"></script>
+	<script src="~/Login_v1/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="~/Login_v1/vendor/select2/select2.min.js"></script>
+	<script src="~/Login_v1/vendor/tilt/tilt.jquery.min.js"></script>
+	<script>
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+	<script src="~/Login_v1/js/main.js"></script>
+
+</body>
+</html> *@
+
+
+
+
+@using TravellerProject.Models
+@model UserSignInViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Traveller's Path | Sign In</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+            border-radius: 25px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            padding: 50px 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .brand {
+            font-size: 2.5rem; /* Increased font size */
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.8rem; /* Increased font size */
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1rem; /* Larger font size for description */
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+            .input-group input {
+                width: 100%;
+                padding: 18px 20px; /* Increased padding for larger inputs */
+                border: 1px solid #ddd;
+                border-radius: 30px;
+                font-size: 1rem;
+                color: #333;
+                outline: none;
+                transition: all 0.3s ease;
+            }
+
+                .input-group input:focus {
+                    border-color: #555;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+
+            .input-group .icon {
+                position: absolute;
+                top: 50%;
+                right: 15px;
+                transform: translateY(-50%);
+                font-size: 1.2rem;
+                color: #aaa;
+            }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #333;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+            button:hover {
+                background: #555;
+                transform: translateY(-2px);
+            }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 1rem; /* Increased font size for footer text */
+            color: #666;
+        }
+
+            .footer a {
+                color: #333;
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+                .footer a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="brand">Traveller's Path</div>
+        <h2>Welcome Back</h2>
+        <p>Sign in to continue exploring the world.</p>
+        <form method="post">
+            <div class="input-group">
+                <input type="text" asp-for="username" placeholder="Username" required>
+                <span class="icon">
+                    <i class="fas fa-user"></i>
+                </span>
+            </div>
+            <div class="input-group">
+                <input type="password" asp-for="password" placeholder="Password" required>
+                <span class="icon">
+                    <i class="fas fa-lock"></i>
+                </span>
+            </div>
+            <button type="submit">Sign In</button>
+        </form>
+        <div class="footer">
+            Don't have an account? <a href="/Login/SignUp">Sign Up</a>
+        </div>
+    </div>
+</body>
+</html>

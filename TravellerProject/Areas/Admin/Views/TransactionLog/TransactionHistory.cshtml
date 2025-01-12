@@ -1,0 +1,37 @@
+﻿@model List<EntityLayer.Concrete.TransactionLog>
+
+@{
+    ViewData["Title"] = "TransactionHistory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Transaction History</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>AccountID</th>
+                <th>Amount</th>
+                <th>Transaction Type</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var log in Model)
+            {
+                <tr>
+                    <td>@log.AccountID</td>
+                    <td>@log.Amount</td>
+                    <td>@log.TransactionType</td>
+                    <td>@log.Date.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No transaction history available.</p>
+}

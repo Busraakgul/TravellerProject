@@ -1,0 +1,68 @@
+﻿@* @using EntityLayer.Concrete
+@model List<Comment>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Comments</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>User</th>
+        <th>Route</th>
+        <th>Date</th>
+        <th>Delete</th>
+        <th></th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.CommentID</td>
+            <td>@item.CommentUser</td>
+            <td>@item.Destination.City</td>
+            <td>@(((DateTime)item.CommentDate).ToString("dd-MM-yyyy"))</td>
+            <td><a href="/Admin/Comment/DeleteComment/@item.CommentID" class="btn btn-outline-danger">Delete</a></td>
+        </tr>
+    }
+</table>
+
+ *@
+
+
+
+
+ @using EntityLayer.Concrete
+@model List<Comment>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Comments</h1>
+
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="table-header">
+            <th style="color: #FFFFFF; background-color: #343a40;">#</th>
+            <th style="color: #FFFFFF; background-color: #343a40;">User</th>
+            <th style="color: #FFFFFF; background-color: #343a40;">Route</th>
+            <th style="color: #FFFFFF; background-color: #343a40;">Date</th>
+            <th style="color: #FFFFFF; background-color: #343a40;">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="table-row">
+                <td>@item.CommentID</td>
+                <td>@item.CommentUser</td>
+                <td>@item.Destination.City</td>
+                <td>@(((DateTime)item.CommentDate).ToString("dd-MM-yyyy"))</td>
+                <td><a href="/Admin/Comment/DeleteComment/@item.CommentID" class="btn btn-outline-danger">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

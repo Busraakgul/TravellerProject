@@ -1,0 +1,83 @@
+﻿@model List<ApiMovieViewModel>
+
+@{
+    ViewData["Title"] = "IMDB Top Movie List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">API IMDB Top Movie List</h1>
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-light text-center">
+
+            <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Movie Name</th>
+                <th>IMDB Rating</th>
+                <th>Year</th>
+                <th>Trailer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="align-middle text-center">
+                    <td>@item.rank</td>
+                    <td>
+                        <img class="rounded shadow-sm" src="@item.image" alt="@item.title Poster" width="100" height="150" />
+                    </td>
+                    <td>
+                        <b>@item.title</b>
+                    </td>
+                    <td>@item.rating</td>
+                    <td>@item.year</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#youTubeModal" data-trailer="@item.trailer">
+                            <i class='bx bx-play-circle'></i> Watch Trailer
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="youTubeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Trailer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <iframe id="youTubeFrame" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var youTubeModal = document.getElementById('youTubeModal');
+        var youTubeFrame = document.getElementById('youTubeFrame');
+
+        youTubeModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var trailerUrl = button.getAttribute('data-trailer');
+
+            // Convert to YouTube embed format if needed
+            if (trailerUrl.includes('watch?v=')) {
+                trailerUrl = trailerUrl.replace('watch?v=', 'embed/');
+            }
+
+            youTubeFrame.src = trailerUrl;
+        });
+
+        youTubeModal.addEventListener('hide.bs.modal', function () {
+            youTubeFrame.src = ''; // Stop the video when modal is closed
+        });
+    });
+</script>

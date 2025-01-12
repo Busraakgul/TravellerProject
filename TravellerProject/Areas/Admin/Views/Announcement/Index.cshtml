@@ -1,0 +1,32 @@
+﻿@* @model List<TravellerProject.Areas.Admin.Models.AnnouncementListViewModel>*@
+@model List<DTOLayer.DTOs.AnnouncementDTOs.AnnouncementListDTO>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Announcement List</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th style="color: #FFFFFF; background-color: #343a40;">#</th>
+        <th style="color: #FFFFFF; background-color: #343a40;">Title</th>
+        <th style="color: #FFFFFF; background-color: #343a40;">Description</th>
+        <th style="color: #FFFFFF; background-color: #343a40;">Delete</th>
+        <th style="color: #FFFFFF; background-color: #343a40;">Update</th>
+        <th style="color: #FFFFFF; background-color: #343a40;">Details</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.AnnouncementID</td>
+            <td>@item.Title</td>
+            <td>@item.Content</td>
+            <td><a href="/Admin/Announcement/DeleteAnnouncement/@item.AnnouncementID" class="btn btn-outline-danger">Delete</a></td>
+            <td><a href="/Admin/Announcement/UpdateAnnouncement/@item.AnnouncementID" class="btn btn-outline-success">Update</a></td>
+            <td><a href="/Admin/Announcement/DetailsAnnouncement/@item.AnnouncementID" class="btn btn-outline-secondary">Details</a></td>
+        </tr>
+    }
+</table>
+<a href="/Admin/Announcement/AddAnnouncement/" class="btn btn-outline-info">New Announcement Post</a>
+

@@ -1,0 +1,55 @@
+﻿@using EntityLayer.Concrete
+@model List<AppUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int sayac = 0;
+}
+
+<h1>User List</h1>
+
+<style>
+    .table-header {
+        background-color: #f8f9fa; 
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="table-header">
+            <th style="color: #FFFFFF; background-color: #343a40;">#</th>
+            <th style="color: #FFFFFF; background-color: #343a40;">Name - Surname</th>
+            <th style="color: #FFFFFF; background-color: #343a40;">User Name</th>
+            <th style="color: #FFFFFF; background-color: #343a40;">Mail</th>
+            <th style="color: #FFFFFF; background-color: #343a40;">Delete</th>
+            <th style="color: #FFFFFF; background-color: #343a40;">Update</th>
+            <th style="color: #FFFFFF; background-color: #343a40;">Comments</th>
+            <th style="color: #FFFFFF; background-color: #343a40;">Previous Tours</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @{
+                    sayac++;
+                }
+                <td>@sayac</td>
+                <td>@item.Name @item.Surname</td>
+                <td>@item.UserName</td>
+                <td>@item.Email</td>
+                <td><a href="/Admin/User/DeleteUser/@item.Id" class="btn btn-outline-danger">Delete</a></td>
+                <td><a href="/Admin/User/EditUser/@item.Id" class="btn btn-outline-success">Update</a></td>
+                <td><a href="/Admin/User/CommentUser/@item.Id" class="btn btn-outline-info">Comments</a></td>
+                <td><a href="/Admin/User/ReservationUser/@item.Id" class="btn btn-outline-secondary">Previous Tours</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Login/SignUp/" class="btn btn-outline-primary">New User Register</a>
+
+
+

@@ -1,0 +1,110 @@
+﻿<section class="popular-destinations py-5">
+    <div class="container py-md-5">
+        <!-- Section Title -->
+        <div class="section-title text-center mb-5">
+            <h6 class="sub-title text-uppercase">Visit</h6>
+            <h3 class="hny-title">Popular Destinations</h3>
+        </div>
+
+        <!-- Destinations Grid -->
+        <div class="row g-5">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 col-lg-4">
+                    <div class="card destination-card shadow-sm border-0 h-100">
+                        <div class="image-wrapper" style="height: 400px;">
+                            <img src="@item.Image" class="card-img-top" alt="@item.City">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="/Destination/DestinationDetails/@item.DestinationID">@item.City</a></h5>
+                            <p class="card-text mb-2"><strong>@item.DayNight</strong></p>
+                            <p class="card-text text-muted mb-3">@item.Description</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="price text-primary">$@item.Price</span>
+                                <a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-outline-primary btn-sm">View Details</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Genel Ayarlar */
+    .section-title h3.hny-title {
+        font-size: 2.5rem; /* Başlık boyutu büyütüldü */
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .section-title .sub-title {
+        font-size: 1.2rem;
+        color: #6c757d;
+        margin-bottom: 1rem;
+    }
+
+    /* Kart Ayarları */
+    .destination-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%; /* Kartların eşit yüksekliği */
+    }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.75rem;
+    }
+
+    .price {
+        font-size: 1.3rem;
+        font-weight: bold;
+    }
+
+    .image-wrapper {
+        width: 100%;
+        height: 300px; /* Yükseklik artırıldı */
+        overflow: hidden; /* Taşan kısımları gizle */
+        position: relative;
+        border-bottom: 3px solid #ddd;
+    }
+
+        .image-wrapper img {
+            width: 100%; /* Genişlik tam olarak uyacak */
+            height: 100%; /* Yükseklik uyacak */
+            object-fit: cover; /* Görüntüyü kırpmak için */
+            display: block;
+        }
+
+    /* Grid Aralıkları */
+    .row.g-5 [class*='col'] {
+        margin-bottom: 4rem; /* Kartlar arasındaki mesafe büyütüldü */
+    }
+
+    .container {
+        padding-top: 0px !important; /* Üst boşluk */
+        padding-bottom: 0px !important; /* Alt boşluk */
+    }
+
+    .card-title a:hover {
+        color: #ff1654;
+        text-decoration: none;
+    }
+
+</style>

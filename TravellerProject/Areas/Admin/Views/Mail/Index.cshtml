@@ -1,0 +1,61 @@
+﻿
+
+ @model TravellerProject.Models.MailRequest
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Mail Sending</h2>
+    <form method="post" novalidate class="needs-validation">
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.ReceiverMail, "Receiver's Email Address", new { @class = "form-label" })
+            <input type="email" asp-for="ReceiverMail" class="form-control" placeholder="Enter receiver's email" required />
+            <span asp-validation-for="ReceiverMail" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.Subject, "Email Subject", new { @class = "form-label" })
+            <input type="text" asp-for="Subject" class="form-control" placeholder="Enter subject" required />
+            <span asp-validation-for="Subject" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.Body, "Content", new { @class = "form-label" })
+            <input type="text" asp-for="Body" class="form-control" placeholder="Enter Content" required />
+            <span asp-validation-for="Body" class="text-danger"></span>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary custom-btn">Send Mail</button>
+        </div>
+
+    </form>
+</div>
+
+<style>
+    .container {
+        max-width: 600px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-btn {
+        background-color: #ff66cc; /* Pink color for button */
+        border: none;
+        padding: 10px 20px;
+    }
+
+    .custom-btn:hover {
+        background-color: #ff3399; /* Darker shade for hover effect */
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+</style>

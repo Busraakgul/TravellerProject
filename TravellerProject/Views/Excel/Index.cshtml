@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h2 class="text-center mb-4">Excel Report Center</h2>
+    <p class="text-center">Generate and download Excel reports:</p>
+
+    <div class="d-grid gap-3 mt-4 text-center">
+        <a href="/Excel/StaticExcelReport/" class="btn btn-info text-white btn-lg">Static Excel Report</a>
+        <a href="/Excel/DestinationExcelReport/" class="btn btn-info text-white btn-lg">Tour Routes Excel Report</a>
+    </div>
+
+    <p class="text-center mt-3">
+        Click the buttons above to generate and download reports of reservations made through Traveller's Path, including details like city, accommodation duration, price, and capacity.
+    </p>
+</div>

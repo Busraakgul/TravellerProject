@@ -1,0 +1,78 @@
+﻿ @model TravellerProject.Areas.Member.Models.UserEditViewModel
+@{
+    ViewData["Title"] = "Index";
+    //Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow-sm border-0 rounded-3" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: #ffffff;">
+            <div class="card-header d-flex justify-content-between align-items-center" style="border-bottom: 1px solid #ffffff;">
+                <h2 class="mb-0">Edit Profile</h2>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a href="#" data-action="collapse" class="icon-link"><i class="ft-minus"></i></a></li>
+                        <li><a href="#" data-action="reload" class="icon-link"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a href="#" data-action="expand" class="icon-link"><i class="ft-maximize"></i></a></li>
+                        <li><a href="#" data-action="close" class="icon-link"><i class="ft-x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body" style="background-color: #f9f9f9; color: #343a40;">
+                    <p class="card-text">Profile editing is below:</p>
+
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.name, "First Name", new { @class = "control-label" })
+                            <input type="text" asp-for="name" class="form-control" placeholder="Enter your first name" />
+                            @Html.ValidationMessageFor(m => m.name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.surname, "Last Name", new { @class = "control-label" })
+                            <input type="text" asp-for="surname" class="form-control" placeholder="Enter your last name" />
+                            @Html.ValidationMessageFor(m => m.surname, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.mail, "Email Address", new { @class = "control-label" })
+                            <input type="email" asp-for="mail" class="form-control" placeholder="Enter your email address" />
+                            @Html.ValidationMessageFor(m => m.mail, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.password, "Password", new { @class = "control-label" })
+                            <input type="password" asp-for="password" class="form-control" placeholder="Enter your password" />
+                            @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.confirmpassword, "Confirm Password", new { @class = "control-label" })
+                            <input type="password" asp-for="confirmpassword" class="form-control" placeholder="Re-enter your password" />
+                            @Html.ValidationMessageFor(m => m.confirmpassword, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.phonenumber, "Phone Number", new { @class = "control-label" })
+                            <input type="tel" asp-for="phonenumber" class="form-control" placeholder="Enter your phone number" />
+                            @Html.ValidationMessageFor(m => m.phonenumber, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Image, "Profile Picture", new { @class = "control-label" })
+                            <input type="file" asp-for="Image" class="form-control-file" />
+                            @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

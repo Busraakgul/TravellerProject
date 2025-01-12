@@ -1,0 +1,71 @@
+﻿@using EntityLayer.Concrete
+@model List<Destination>
+@{
+    ViewData["Title"] = "Index";
+    //Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow-sm border-0 rounded-3" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: #ffffff;">
+            <div class="card-header d-flex justify-content-between align-items-center" style="border-bottom: 1px solid #ffffff;">
+                <h2 class="mb-0">Explore Our Destination Routes</h2>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a href="#" data-action="collapse" class="icon-link"><i class="ft-minus"></i></a></li>
+                        <li><a href="#" data-action="reload" class="icon-link"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a href="#" data-action="expand" class="icon-link"><i class="ft-maximize"></i></a></li>
+                        <li><a href="#" data-action="close" class="icon-link"><i class="ft-x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body" style="background-color: #f9f9f9; color: #343a40;">
+                    <p class="card-text">Active Tour Routes are below:</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead style="background: linear-gradient(to right, #6a11cb, #2575fc); color: #ffffff;">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">City</th>
+                                    <th scope="col">Duration</th>
+                                    <th scope="col">Capacity</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col" class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null && Model.Any())
+                                {
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.DestinationID</td>
+                                            <td>@item.City</td>
+                                            <td>@item.DayNight</td>
+                                            <td>@item.Capacity</td>
+                                            <td>@String.Format("{0:C}", item.Price)</td>
+                                            <td class="text-center">
+                                                <a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-info btn-sm" data-toggle="tooltip" title="View Details">
+                                                    <i class="fa fa-info-circle"></i> Details
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr style="background-color: #e9e9e9; color: #6c757d;">
+                                        <td colspan="5" class="text-center">No reservations found.</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

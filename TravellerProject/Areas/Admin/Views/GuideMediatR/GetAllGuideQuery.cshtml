@@ -1,0 +1,24 @@
+﻿@model GetGuideByIDQueryResult
+@{
+    ViewData["Title"] = "GetAllGuideQuery";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Guide Information Edit</h2>
+<form method="post">
+    <input type="hidden" asp-for="GuideID" />
+
+    <label>Guide Name</label>
+    <input type="text" class="form-control" asp-for="Name" />
+    <br />
+
+    <label>Description</label>
+    <input type="text" class="form-control" asp-for="Description" />
+    <br />
+
+    <label>Image URL</label>
+    <input type="text" class="form-control" asp-for="Image" placeholder="Enter image URL" />
+    <br />
+
+    <button class="btn btn-outline-primary">Update Information</button>
+</form>

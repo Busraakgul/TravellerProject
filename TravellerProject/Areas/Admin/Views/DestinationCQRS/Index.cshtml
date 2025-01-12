@@ -1,0 +1,35 @@
+﻿@model List<GetAllDestinationQueryResult>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h2>CQRS Tour Route Datas</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>City</th>
+        <th>Day- Night</th>
+        <th>Price</th>
+        <th>Capacity</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.city</td>
+            <td>@item.daynight</td>
+            <td>$ @item.price</td>
+            <td>@item.capacity</td>
+            <td><a href="/Admin/DestinationCQRS/DeleteDestination/@item.id" class="btn btn-outline-danger">Delete</a></td>
+            <td><a href="/Admin/DestinationCQRS/GetDestination/@item.id" class="btn btn-outline-success">Update</a></td>
+        </tr>
+    }
+</table>
+<a href="/Admin/DestinationCQRS/AddDestination/" class="btn btn-outline-primary">New Tour Route Entry</a>
+

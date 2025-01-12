@@ -1,0 +1,303 @@
+﻿ @model EntityLayer.Concrete.Destination
+@{
+    ViewData["Title"] = "DestinationDetails";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<!doctype html>
+<html lang="zxx">
+
+<body>
+
+    <!-- about breadcrumb -->
+    <section class="w3l-about-breadcrumb text-left">
+        <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+            <div class="container">
+                <h2 class="title">Tour Details</h2>
+                <ul class="breadcrumbs-custom-path mt-2">
+                    <li><a href="/Default/Index">Home</a></li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Guide's Comments </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="py-5 w3l-homeblock1 text-center">
+        <div class="container mt-md-3">
+            <h3 class="blog-desc-big text-center mb-4">
+                Discover Memorable Experiences: Plan Your Perfect Travel with Us
+            </h3>
+
+            <div class="blog-post-align">
+                <div class="blog-post-img">
+                    <a href="#"><img src="@Model.Guide.Image" alt="Guide Image" class="rounded-circle img-fluid" /></a>
+                </div>
+                <div class="blog-post-info">
+                    <div class="author align-items-center mb-1">
+                        <a href="#">@Model.Guide.Name</a> in <a href="#url">@Model.Guide.Description2</a>
+                    </div>
+                    <ul class="blog-meta">
+                        <li class="meta-item blog-lesson">
+                            <span class="meta-value">@(((DateTime)Model.Date).ToString("dd-MM-yyyy"))</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="blog-post-main w3l-homeblock1">
+        <!--/blog-post-->
+        <div class="blog-content-inf pb-5">
+            <div class="container pb-lg-4">
+                <div class="single-post-image">
+                    @*<div class="post-content">
+                    <img src="@Model.CoverImage" style="width:contain" class="radius-image img-fluid mb-5" alt="" />
+                    </div> *@
+
+                    <div class="cover-image-container">
+                        <img src="@Model.CoverImage" alt="Cover Image" class="cover-image" />
+                    </div>
+
+
+                </div>
+                <div class="single-post-content">
+                    <p class="alphabet mb-4">
+                        <span class="big-letter">A</span>@Model.Details1
+                    </p>
+                    <blockquote class="blockquote my-5">
+                        <div class="icon-quote"><span class="fa fa-quote-left" aria-hidden="true"></span></div>
+                        Travel Routes Adventure
+                        <footer class="blockquote-footer mt-3">
+                            Explore it...
+                        </footer>
+                    </blockquote>
+                    <div class="sing-post-thumb mb-5 row pt-3">
+                        <div class="col-sm-6">
+                            <a href="#url"><img src="@Model.Image" style="width: 400px; height:450px;" class="img-fluid radius-image" alt=""></a>
+                        </div>
+                        <div class="col-sm-6 mt-sm-0 mt-3">
+                            <a href="#url"><img src="@Model.Image2" style="width: 400px; height:450px;" class="img-fluid radius-image" alt=""></a>
+                        </div>
+                    </div>
+
+                    <h3 class="blog-desc-big text-center mb-4">About @Model.City</h3>
+
+                    <p class="mb-5 text-center text-muted">
+                        @Model.Details2
+                    </p>
+
+                    <!-- Additional Information Section -->
+                    <div class="additional-info text-center mb-5">
+                        <h4 class="mb-4 text-primary">Key Information</h4>
+                        <div class="row justify-content-center">
+                            <div class="col-md-4">
+                                <div class="info-box">
+                                    <strong>Capacity:</strong>
+                                    <p>@Model.Capacity</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="info-box">
+                                    <strong>Price:</strong>
+                                    <p>$@Model.Price</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="info-box">
+                                    <strong>Day/Night Count:</strong>
+                                    <p>@Model.DayNight</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="d-grid left-right mt-5 pb-md-5">
+                        <div class="buttons-singles tags">
+                            <h4>Tags :</h4>
+                            <a href="#blog-tag">Travel</a>
+                            <a href="#blog-tag">Culture</a>
+                            <a href="#blog-tag">Hotel</a>
+                            <a href="#blog-tag">Food</a>
+                        </div>
+                        <div class="buttons-singles">
+                            <h4>Share :</h4>
+                            <a href="#blog-share"><span class="fa fa-facebook" aria-hidden="true"></span></a>
+                            <a href="#blog-share"><span class="fa fa-twitter" aria-hidden="true"></span></a>
+                            <a href="#blog-share"><span class="fa fa-google-plus" aria-hidden="true"></span></a>
+                            <a href="#blog-share"><span class="fa fa-pinterest-p" aria-hidden="true"></span></a>
+                        </div>
+                    </div>
+
+                    @*@await Component.InvokeAsync("_GuideDetails")*@
+
+
+                    <div class="author-card mt-5">
+                        <div class="row align-items-center">
+                            <div class="col-sm-3 col-6">
+                                <div>
+                                    <img src="@Model.Guide.Image" class="rounded-circle img-fluid">
+                                </div>
+                            </div>
+                            <div class="col-sm-9 mt-sm-0 mt-3">
+                                <h3 class="mb-3 title">@Model.Guide.Name</h3>
+                                <p>
+                                    @Model.Guide.Description
+                                </p>
+                                <ul class="author-icons mt-4">
+                                    <li>
+                                        <a class="facebook" href="#url">
+                                            <span class="fa fa-facebook"
+                                                  aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="twitter" href="#url">
+                                            <span class="fa fa-twitter"
+                                                  aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="google" href="#url">
+                                            <span class="fa fa-google-plus"
+                                                  aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="linkedin" href="#url">
+                                            <span class="fa fa-linkedin"
+                                                  aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="github" href="#url">
+                                            <span class="fa fa-github"
+                                                  aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dribbble" href="#url">
+                                            <span class="fa fa-dribbble"
+                                                  aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--//author-card-->
+                    @await Component.InvokeAsync("_CommentList", new { id = ViewBag.i })
+
+                    @await Html.PartialAsync("~/Views/Comment/AddComment.cshtml", new { id = ViewBag.destID })
+
+                </div>
+            </div>
+            <!--//blog-post-->
+        </div>
+    </section>
+
+
+</body>
+</html>
+<style>
+    /* Başlık Ayarları */
+    h3.blog-desc-big {
+        font-size: 2.5rem; /* Başlık boyutu */
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+    }
+
+    /* Genel Metin Ayarları */
+    p.mb-5 {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #777;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* Ekstra Bilgi Box Ayarları */
+    .additional-info .info-box {
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+        .additional-info .info-box strong {
+            font-size: 1.1rem;
+            color: #007bff;
+        }
+
+        .additional-info .info-box p {
+            font-size: 1.2rem;
+            color: #333;
+            margin-top: 0.5rem;
+        }
+
+
+    .blog-post-align {
+        display: flex; /* Flexbox ile hizalama */
+        align-items: center; /* Dikey hizalama */
+        gap: 1rem; /* Elemanlar arasındaki boşluk */
+    }
+
+    .blog-post-img {
+        flex-shrink: 0; /* Resmin boyutunu korur */
+    }
+
+        .blog-post-img img {
+            width: 100px; /* Resim boyutu */
+            height: 100px;
+            object-fit: cover; /* Resim kesmeden doldurur */
+            border-radius: 50%; /* Yuvarlak köşeler */
+        }
+
+    .blog-post-info {
+        flex-grow: 1; /* Yazıyı genişletir */
+    }
+
+    .author a {
+        font-weight: bold;
+        color: #333;
+        text-decoration: none;
+    }
+
+        .author a:hover {
+            color: #007bff;
+            text-decoration: underline;
+        }
+
+    .blog-meta {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+
+    .cover-image-container {
+        display: flex; /* Flexbox kullanımı */
+        justify-content: center; /* Yatayda ortala */
+        align-items: center; /* Dikeyde ortala */
+        height: 100%; /* Tam ekran yüksekliği */
+        width: 100%; /* Tam genişlik */
+        margin: 0; /* Boşlukları sıfırla */
+        margin-bottom: 50px; /* Boşlukları sıfırla */
+        padding: 0;
+        overflow: hidden; /* Taşmaları gizle */
+    }
+
+    .cover-image {
+        height: 90%;
+        width: 90%;
+        object-fit: cover; /* Resmi kırparak ekranı doldur */
+    }
+
+</style>
+
+

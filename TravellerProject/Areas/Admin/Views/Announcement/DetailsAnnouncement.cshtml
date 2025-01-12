@@ -1,0 +1,25 @@
+﻿@model AnnouncementDetailDTO
+@{
+    ViewData["Title"] = "DetailsAnnouncement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h1>Announcement Details</h1>
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <td>@Model.Title</td>
+    </tr>
+    <tr>
+        <th>Content</th>
+        <td>@Model.Content</td>
+    </tr>
+    <tr>
+        <th>Date</th>
+        <td>@Model.Date.ToString("dd/MM/yyyy")</td>
+    </tr>
+    <tr>
+        <th>Created By</th>
+        <td>@Model.CreatedBy</td>
+    </tr>
+</table>
+<a href="/Admin/Announcement/Index" class="btn btn-outline-secondary">Back to List</a>

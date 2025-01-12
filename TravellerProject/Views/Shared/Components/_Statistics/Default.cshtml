@@ -1,0 +1,98 @@
+﻿@* <section class="w3l-stats py-5" id="stats">
+    <div class="gallery-inner container py-lg-0 py-3">
+        <div class="row stats-con pb-lg-3">
+            <div class="col-lg-3 col-6 stats_info counter_grid">
+                <p class="counter">@ViewBag.v1</p>
+                <h4>Locations</h4>
+            </div>
+            <div class="col-lg-3 col-6 stats_info counter_grid1">
+                <p class="counter">@ViewBag.v2</p>
+                <h4>Travel Guides</h4>
+            </div>
+            <div class="col-lg-3 col-6 stats_info counter_grid mt-lg-0 mt-5">
+                <p class="counter">@ViewBag.v3</p>
+                <h4>Happy Customers</h4>
+            </div>
+            <div class="col-lg-3 col-6 stats_info counter_grid2 mt-lg-0 mt-5">
+                <p class="counter">25</p>
+                <h4>Awards</h4>
+            </div>
+        </div>
+    </div>
+</section>*@
+
+
+<section class="w3l-stats py-5" id="stats">
+
+    <div class="container py-lg-0 py-3">
+        <!-- Stats Row -->
+        <div class="row stats-con justify-content-start pb-lg-3">
+            <div class="col stats_info counter_grid text-center">
+                <p class="counter">@ViewBag.v1</p>
+                <h4>Locations</h4>
+            </div>
+            <div class="col stats_info counter_grid1 text-center">
+                <p class="counter">@ViewBag.v2</p>
+                <h4>Travel Guides</h4>
+            </div>
+            <div class="col stats_info counter_grid mt-lg-0 mt-5 text-center">
+                <p class="counter">@ViewBag.v3</p>
+                <h4>Happy Customers</h4>
+            </div>
+            <div class="col stats_info counter_grid2 mt-lg-0 mt-5 text-center">
+                <p class="counter">@ViewBag.v4</p>
+                <h4>Awards</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<style>
+    /* Genel Ayarlar */
+    .container {
+        max-width: 1200px; /* Konteynerin genişliğini belirleyelim */
+        margin: 0 auto; /* Sayfanın ortalanmasını sağlıyoruz */
+    }
+
+    .stats-con {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* İçeriklerin yatayda ortalanması */
+        gap: 2rem; /* Kartlar arasına boşluk */
+    }
+
+    .stats_info {
+        background-color: #f8f9fa; /* Hafif gri arka plan rengi */
+        padding: 2rem;
+        border-radius: 8px; /* Yuvarlatılmış köşeler */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover efekti */
+    }
+
+    .stats_info:hover {
+        transform: translateY(-10px); /* Hoverda kartı yukarı çekme */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Hoverda daha belirgin gölge */
+    }
+
+    .counter {
+        font-size: 2.5rem; /* Sayacın boyut */
+        font-weight: bold;
+        color: #007bff; /* Sayacın rengini mavi */
+        margin-bottom: 1rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+        text-transform: uppercase; /* Başlıkları büyük harf yapma */
+    }
+
+    .container {
+        padding-top: 0px !important; /* Üst boşluk */
+        padding-bottom: 20px !important; /* Alt boşluk */
+    }
+
+
+</style>

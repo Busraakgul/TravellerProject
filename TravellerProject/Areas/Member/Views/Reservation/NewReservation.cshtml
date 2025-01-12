@@ -1,0 +1,60 @@
+﻿@model EntityLayer.Concrete.Reservation
+@{
+    ViewData["Title"] = "New Reservation";
+    //Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow-sm border-0 rounded-3" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: #ffffff;">
+            <div class="card-header d-flex justify-content-between align-items-center" style="border-bottom: 1px solid #ffffff;">
+                <h2 class="mb-0">New Reservation</h2>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a href="#" data-action="collapse" class="icon-link"><i class="ft-minus"></i></a></li>
+                        <li><a href="#" data-action="reload" class="icon-link"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a href="#" data-action="expand" class="icon-link"><i class="ft-maximize"></i></a></li>
+                        <li><a href="#" data-action="close" class="icon-link"><i class="ft-x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body" style="background-color: #f9f9f9; color: #343a40;">
+                    <p class="card-text">You can make a new reservation below:</p>
+                    <form method="post" novalidate>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.DestinationID, "Location", new { @class = "control-label" })
+                            @Html.DropDownListFor(m => m.DestinationID, (List<SelectListItem>)ViewBag.v, "Select a Location", new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(m => m.DestinationID, "", new { @class = "text-danger" })
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PersonCount, "Person Count", new { @class = "control-label" })
+                            <input type="number" asp-for="PersonCount" class="form-control" min="1" placeholder="Enter number of persons" required />
+                            @Html.ValidationMessageFor(m => m.PersonCount, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ReservationDate, "Reservation Date", new { @class = "control-label" })
+                            <input type="date" asp-for="ReservationDate" class="form-control" required />
+                            @Html.ValidationMessageFor(m => m.ReservationDate, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Description, "Description", new { @class = "control-label" })
+                            <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter any additional details" required></textarea>
+                            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-success">Make a Reservation</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

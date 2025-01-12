@@ -1,0 +1,30 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow-sm border-0 rounded-3" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: #ffffff;">
+            <div class="card-header d-flex justify-content-between align-items-center" style="border-bottom: 1px solid #ffffff;">
+                <h2 class="mb-0">Multiple Language Support</h2>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a href="#" data-action="collapse" class="icon-link"><i class="ft-minus"></i></a></li>
+                        <li><a href="#" data-action="reload" class="icon-link"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a href="#" data-action="expand" class="icon-link"><i class="ft-maximize"></i></a></li>
+                        <li><a href="#" data-action="close" class="icon-link"><i class="ft-x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body" style="background-color: #f9f9f9; color: #343a40;">
+                    <p class="card-text">@localizer["Hello"]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

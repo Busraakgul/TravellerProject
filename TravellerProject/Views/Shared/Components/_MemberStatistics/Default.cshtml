@@ -1,0 +1,59 @@
+﻿@* <div class="col-xl-4 col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title" id="heading-multiple-thumbnails">Profile Information</h4>
+            <a class="heading-elements-toggle">
+                <i class="la la-ellipsis-v font-medium-3"></i>
+            </a>
+    
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <p>Welcome to Traveller's Path! Here, you can view your profile information and manage your past and upcoming reservations. Stay up-to-date on the status of each booking and keep track of your travel history for a seamless experience.:</p>
+                <h4 class="card-title">Statistics</h4>
+                <h6>Active Reservation: 5</h6>
+                <h6>Past Reservation: 5</h6>
+                <h6>Approval Reservation: 5</h6>
+                <h6>Active Reservation: 5</h6>
+                <h6>Active Reservation: 5</h6>
+                <h6>Active Reservation: 5</h6>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+ *@
+
+<div class="col-xl-4 col-lg-12">
+    <div class="card shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center pb-2">
+            <h4 class="card-title mb-0 text-primary">Profile Information</h4>
+            <a href="/Member/Profile/Index" class="text-secondary">
+                <i class="fas fa-user-edit text-sm" data-bs-toggle="tooltip" title="Edit Profile"></i>
+            </a>
+        </div>
+        <div class="card-body pt-3">
+                Welcome to Traveller's Path! Manage your reservations and keep track of your travel history easily.
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item border-0 p-0 mb-1">
+                    <strong class="text-dark">Full Name:</strong> @ViewBag.memberName
+                </li>
+                <li class="list-group-item border-0 p-0 mb-1">
+                    <strong class="text-dark">Mobile:</strong> @ViewBag.memberPhone
+                </li>
+                <li class="list-group-item border-0 p-0">
+                    <strong class="text-dark">Email:</strong> @ViewBag.memberMail
+                </li>
+            </ul>
+
+            <hr class="horizontal gray-light my-3">
+
+            <h4 class="card-title mt-0 mb-2">Statistics</h4>
+            <p class="mb-1"><strong>Active Reservations:</strong> @ViewBag.ActiveReservations</p>
+            <p class="mb-1"><strong>Past Reservations:</strong> @ViewBag.PastReservations</p>
+            <p class="mb-0"><strong>Pending Approval:</strong> @ViewBag.ApprovalReservations</p>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,281 @@
+﻿@{
+    ViewData["Title"] = "Index3";
+}
+
+@* @section Scripts
+{
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(() => {
+            var connection = new signalR.HubConnectionBuilder()
+                .withUrl("http://localhost:5021/VisitorHub")
+                .build();
+
+            $("#connectionStatus").text(connection.state);
+
+            connection.start().then(() => {
+                $("#connectionStatus").text(connection.state);
+            }).catch((err) => {
+                console.log("SignalR Connection Error:", err);
+            });
+        });
+    </script>
+}
+
+<div class="container">
+    <br />
+    <div class="alert alert-warning">
+        Connection Status: <b id="connectionStatus"></b>
+    </div>
+</div> *@
+
+
+@* <h1>SignalR Visitor Chart</h1>
+
+@section Scripts
+{
+
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(() => {
+
+            var visitChartList = new Array();
+
+            visitChartList.push(["Dates", "London", "Paris", "Berlin", "Sdyney", "Dubai", "Porto", "Barcelona"])
+
+            $("#connectionStatus").text("Connecting..."); // Başlangıçta "Connecting..." göster
+            var connection = new signalR.HubConnectionBuilder().withUrl("http://localhost:3573/VisitorHub").build();
+
+            connection.start().then(() => {
+                $("#connectionStatus").text(connection.state); // Bağlantı durumu başarılıysa doğru şekilde yansıt
+                connection.invoke("GetVisitorList"); // Veriyi almak için metod çağrılır
+            }).catch((err) => {
+                console.log(err);
+                $("#connectionStatus").text("Connection Error"); // Hata durumunda bağlantı hatası mesajı
+            });
+
+            connection.on("ReceiveVisitorList", (visitList) => {
+
+                visitChartList = visitChartList.splice(0, 1);
+
+                visitList.forEach((item) => {
+
+                    visitChartList.push([item.visitDate, item.counts[0], item.counts[1], item.counts[2], item.counts[3], item.counts[4], item.counts[5], item.counts[6]])
+
+                })
+
+                google.charts.load('current', { 'packages': ['corechart'] });
+                google.charts.setOnLoadCallback(drawChart);
+
+            })
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable(visitChartList);
+
+                var options = {
+                    title: 'Travellers Path Visitor List',
+                    curveType: 'none',
+                    legend: { position: 'bottom' }
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+                chart.draw(data, options);
+            }
+
+        })
+    </script>
+
+}
+
+<div class="container">
+    <br />
+    <div class="alert alert-warning">
+        Connection Status: <b id="connectionStatus"></b>
+    </div>
+</div>
+
+<div id="curve_chart" style="width: 1500px; height: 800px"></div>
+ *@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalR Visitor Chart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        #curve_chart {
+            width: 100%;
+            height: 60vh; /* Responsive yükseklik */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Sayfa Başlığı -->
+        <h1 class="text-center text-primary mb-4">SignalR Visitor Chart</h1>
+
+        <!-- Yükleme Göstergesi -->
+        <div id="loadingSpinner" class="text-center" style="display: none;">
+            <div class="spinner-border text-info" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <p class="text-info mt-2">Loading data...</p>
+        </div>
+
+        <!-- Grafik Kartı -->
+        <div class="card border-info mb-3">
+            <div class="card-header text-white bg-info">
+                <h4>Visitor Statistics</h4>
+            </div>
+            @*<div class="card-body">
+            <div id="curve_chart" style="width: 1800px; height: 800px"></div>
+            </div> *@
+
+
+            <div class="container-fluid">
+              
+                <div id="curve_chart" style="width: 100%; max-width: 2500px; height: 650px;"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bağlantı Durumu -->
+        <div class="alert alert-secondary text-center">
+            <strong>Connection Status:</strong> <b id="connectionStatus"></b>
+        </div>
+
+        <!-- Tablo Kartı -->
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">
+                <h5>Visitor Data Table</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>London</th>
+                            <th>Paris</th>
+                            <th>Berlin</th>
+                            <th>Sydney</th>
+                            <th>Dubai</th>
+                            <th>Porto</th>
+                            <th>Barcelona</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(() => {
+            var visitChartList = [["Dates", "London", "Paris", "Berlin", "Sydney", "Dubai", "Porto", "Barcelona"]];
+            $("#connectionStatus").text("Connecting...");
+            var connection = new signalR.HubConnectionBuilder().withUrl("http://localhost:3573/VisitorHub").build();
+
+            // Bağlantı Durumunu Güncelleyen Fonksiyon
+            function updateConnectionStatus(status) {
+                const statusElement = $("#connectionStatus");
+                statusElement.text(status);
+
+                if (status === "Connected") {
+                    statusElement.css("color", "green");
+                } else if (status === "Connecting...") {
+                    statusElement.css("color", "orange");
+                } else {
+                    statusElement.css("color", "red");
+                }
+            }
+
+            // Bağlantı Başlatma
+            $("#loadingSpinner").show();
+            connection.start()
+                .then(() => {
+                    updateConnectionStatus("Connected");
+                    connection.invoke("GetVisitorList");
+                })
+                .catch((err) => {
+                    console.log(err);
+                    updateConnectionStatus("Connection Error");
+                    $("#loadingSpinner").hide();
+                });
+
+            // Veri Alındığında Çalıştır
+            connection.on("ReceiveVisitorList", (visitList) => {
+                visitChartList = [["Dates", "London", "Paris", "Berlin", "Sydney", "Dubai", "Porto", "Barcelona"]];
+                $("#dataTable").empty(); // Tabloyu temizle
+
+                visitList.forEach((item) => {
+                    visitChartList.push([item.visitDate, ...item.counts]);
+
+                    // Tabloya satır ekle
+                    const row = `<tr>
+                                                            <td>${item.visitDate}</td>
+                                                            <td>${item.counts[0]}</td>
+                                                            <td>${item.counts[1]}</td>
+                                                            <td>${item.counts[2]}</td>
+                                                            <td>${item.counts[3]}</td>
+                                                            <td>${item.counts[4]}</td>
+                                                            <td>${item.counts[5]}</td>
+                                                            <td>${item.counts[6]}</td>
+                                                         </tr>`;
+                    $("#dataTable").append(row);
+                });
+
+                // Google Chart Çizimi
+                google.charts.load('current', { packages: ['corechart'] });
+                google.charts.setOnLoadCallback(drawChart);
+                $("#loadingSpinner").hide();
+            });
+
+            // Grafik Çizme Fonksiyonu
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable(visitChartList);
+
+                // var options = {
+                //     title: 'Travellers Path Visitor List',
+                //     curveType: 'function',
+                //     legend: { position: 'bottom' },
+                //     colors: ['#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d'],
+                //     lineWidth: 2,
+                //     pointSize: 5,
+                //     hAxis: { title: 'Dates' },
+                //     vAxis: { title: 'Visitor Count' }
+                // };
+
+                var options = {
+                    title: 'Travellers Path Visitor List',
+                    curveType: 'function',
+                    legend: { position: 'top', maxLines: 2 }, // Açıklama üstte ve 2 satırda
+                    colors: ['#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d'],
+                    lineWidth: 2,
+                    pointSize: 5,
+                    hAxis: { title: 'Dates', slantedText: true, slantedTextAngle: 45 }, // X ekseni yazılarını yatay kaydır
+                    vAxis: { title: 'Visitor Count' }
+                };
+
+
+                var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+                chart.draw(data, options);
+            }
+        });
+    </script>
+</body>
+</html>
+

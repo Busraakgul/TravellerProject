@@ -1,0 +1,79 @@
+﻿@model List<AppRole>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1 class="mb-4 text-center">Role Management</h1>
+
+@if (Model.Count > 0)
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle text-center">
+            <thead class="bg-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Role Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td>@item.Name</td>
+                        <td>
+                            <div class="d-flex justify-content-center gap-5">
+                                <a href="@Url.Action("DeleteRole", "Role", new { area = "Admin", id = item.Id })"
+                                   class="btn btn-danger btn-sm"
+                                   onclick="return confirm('Are you sure you want to delete this role?');">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </a>
+                                <a href="@Url.Action("UpdateRole", "Role", new { area = "Admin", id = item.Id })"
+                                   class="btn btn-success btn-sm">
+                                    <i class="fas fa-edit"></i> Update
+                                </a>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning text-center">
+        <i class="fas fa-exclamation-circle"></i> No roles found.
+    </div>
+}
+
+<div class="text-center mt-4">
+    <a href="@Url.Action("MakeRole", "Role", new { area = "Admin" })" class="btn btn-primary btn-lg">
+        <i class="fas fa-plus-circle"></i> Add New Role
+    </a>
+</div>
+
+
+
+<style>
+    thead {
+        background-color: #4a4a4a !important;
+        color: white !important;
+    }
+
+
+
+    th {
+        color: white !important; /* Beyaz yazıyı zorla uygula */
+    }
+
+</style>
+
+
+
+

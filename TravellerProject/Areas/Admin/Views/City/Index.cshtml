@@ -1,0 +1,347 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<h2>City - Country Operations</h2>
+<br />
+
+<div class="d-flex justify-content-start flex-wrap gap-2">
+    <button type="button" id="btngetlist" class="btn btn-outline-info">City List</button>
+    <button type="button" id="btngetbyid" class="btn btn-outline-primary">Get City</button>
+    <button type="button" id="btnaddcity" class="btn btn-outline-warning">Add City</button>
+    <button type="button" id="btndeletecity" class="btn btn-outline-danger">Delete City</button>
+    <button type="button" id="btnupdatecity" class="btn btn-outline-success">Update City</button>
+</div>
+<br />
+
+<!-- City List Section -->
+<div id="citylist" style="display: none;">
+    <h3>City List</h3>
+    <div>The city list will appear here</div>
+</div>
+
+<!-- Get City by ID Section -->
+<div id="getcitybyid" style="display: none;">
+    <h3>Get City by ID</h3>
+    <input type="text" id="txtid" placeholder="Enter City ID" class="form-control" />
+    <button type="button" id="btnfetchcity" class="btn btn-primary mt-2">Fetch City</button>
+
+    <div id="destinationlistbyid"></div>
+</div>
+
+<!-- Add City Section -->
+<div id="addcityform" style="display: none;">
+    <h3>Add City</h3>
+    <input type="text" id="txtcity" placeholder="Enter City Name" class="form-control" />
+    <input type="text" id="txtdaynight" placeholder="Day - Night Count" class="form-control mt-2" />
+    <input type="text" id="txtprice" placeholder="Price" class="form-control mt-2" />
+    <input type="text" id="txtcapacity" placeholder="Number of People to Stay" class="form-control mt-2" />
+    <button type="button" id="btnaddingcity" class="btn btn-warning mt-2">Add City</button>
+</div>
+
+<!-- Delete City Section -->
+<div id="deletecityform" style="display: none;">
+    <h3>Delete City</h3>
+    <input type="text" id="txtcityid" placeholder="Enter City ID to Delete" class="form-control" />
+    <button type="button" id="deletecityformbutton" class="btn btn-danger mt-2">Delete City</button>
+</div>
+
+<!-- Update City Section -->
+<div id="updatecityform" style="display: none;">
+    <h3>Update City</h3>
+    <input type="text" id="txtcityeditid" placeholder="Enter City ID to Update" class="form-control" />
+    <input type="text" id="txtcityname" placeholder="New City Name" class="form-control mt-2" />
+    <input type="text" id="txtcitdaynightname" placeholder="New Day-Night Info" class="form-control mt-2" />
+    <button type="button" id="btnupdatingcity" class="btn btn-success mt-2">Update City</button>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        // Show relevant section and hide others
+        $("#btngetlist").click(function () { resetForms(); $("#citylist").show(); });
+        $("#btngetbyid").click(function () { resetForms(); $("#getcitybyid").show(); });
+        $("#btnaddcity").click(function () { resetForms(); $("#addcityform").show(); });
+        $("#btndeletecity").click(function () { resetForms(); $("#deletecityform").show(); });
+        $("#btnupdatecity").click(function () { resetForms(); $("#updatecityform").show(); });
+
+        function resetForms() {
+            $("#citylist, #getcitybyid, #addcityform, #updatecityform").hide();
+        }
+
+        //AJAX Call for Get City List
+        $("#btngetlist").click(function () {
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "Get",
+                url: "/Admin/City/CityList/",
+                success: function (func) {
+                    let w = jQuery.parseJSON(func);
+                    console.log(w);
+                    let tablehtml = "<table class='table table-bordered'> <tr><th> City Name </th> <th> Day-Night </th> <th> Price </th> </tr>";
+                    $.each(w, (index, value) => {
+                        tablehtml += `<tr><td>${value.City}</td> <td>${value.DayNight}</td> <td> $ ${value.Price}  </td> </tr>`
+                    });
+                    tablehtml += "</table>";
+                    $("#citylist").html(tablehtml);
+                }
+            });
+        });
+
+        $("#btnaddcity").click(function () {
+            let cityvalues = {
+                City: $("#txtcity").val(),
+                DayNight: $("#txtdaynight").val(),
+                Price: $("#txtprice").val(),
+                Capacity: $("#txtcapacity").val()
+            };
+
+            // Kontrol: City ve diğer alanların boş olup olmadığını kontrol et
+            if (!cityvalues.City || !cityvalues.DayNight || !cityvalues.Price || !cityvalues.Capacity) {
+                alert("All fields must be filled in.");
+                return; // Eğer boşsa işlemi durdur
+            }
+
+            $.ajax({
+                type: "post",
+                url: "/Admin/City/AddCityDestination/",
+                data: cityvalues,
+                success: function (func) {
+                    let result = jQuery.parseJSON(func);
+                    alert("City - Route Successfully Added");
+                },
+                error: function (xhr, status, error) {
+                    alert("Error: " + error);
+                }
+            });
+        });
+
+        $("#btngetbyid").click(x => {
+            let id = $("#txtid").val();
+
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "Get",
+                url: "/Admin/City/GetById/",
+                data: { DestinationID: id },
+                success: function (fun2) {
+                    let result = jQuery.parseJSON(fun2);
+                    console.log(result);
+                    let htmlstr = `<table class='table table-bordered'><tr><th>City Name</th><th>Day-Night</th><th>Price</th></tr><tr><td>${result.City}</td><td>${result.DayNight}</td><td>${result.Capacity}</td></tr></table>`;
+                    $("#destinationlistbyid").html(htmlstr);
+                }
+            });
+        });
+
+        $("#btnupdatecity").click(function () {
+            let values = {
+                DestinationID: $("#txtcityeditid").val(),
+                City: $("#txtcityname").val(),
+                DayNight: $("#txtcitdaynightname").val()
+            };
+            $.ajax({
+                type: "post",
+                url: "/Admin/City/UpdateCity/",
+                data: values,
+                success: function (fun4) {
+                    alert("Update operation completed");
+                }
+            });
+        });
+
+        $("#btndeletecity").click(x => {
+            let id = $("#txtcityid").val();
+            $.ajax({
+                url: "/Admin/City/DeleteCity/" + id,
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                success: function (fun3) {
+                    alert("City deleted");
+                }
+            });
+        });
+
+        $("#btnfetchcity").click(function () {
+            let id = $("#txtid").val(); // City ID alanından veri alınıyor
+
+            if (!id) {
+                alert("Please enter a City ID.");
+                return;
+            }
+
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "GET",
+                url: "/Admin/City/GetById/",
+                data: { DestinationID: id },
+                success: function (response) {
+                    let city = JSON.parse(response);
+                    let htmlstr = `<table class='table table-bordered'>
+                                <tr><th>City Name</th><th>Day-Night</th><th>Price</th></tr>
+                                <tr><td>${city.City}</td><td>${city.DayNight}</td><td>${city.Price}</td></tr>
+                            </table>`;
+                    $("#destinationlistbyid").html(htmlstr);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching city by ID:", error);
+                    alert("City could not be fetched. Please try again.");
+                }
+            });
+        });
+
+        $("#btnaddingcity").off("click").on("click", function () {
+            let cityvalues = {
+                City: $("#txtcity").val(),
+                DayNight: $("#txtdaynight").val(),
+                Price: $("#txtprice").val(),
+                Capacity: $("#txtcapacity").val()
+            };
+
+            if (!cityvalues.City || !cityvalues.DayNight || !cityvalues.Price || !cityvalues.Capacity) {
+                alert("All fields must be filled in.");
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/City/AddCityDestination/",
+                data: cityvalues,
+                success: function (response) {
+                    alert("City added successfully.");
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                    alert("Error: " + error);
+                }
+            });
+        });
+
+
+        function resetForms() {
+            console.log("Resetting forms...");
+            $("#txtcity, #txtdaynight, #txtprice, #txtcapacity").val('');
+            $("#citylist, #getcitybyid, #addcityform, #deletecityform, #updatecityform").hide();
+        }
+
+        $("#btnaddcity").click(function () {
+            resetForms(); // Diğer bölümleri gizle ve inputları temizle
+            $("#addcityform").show(); // Formu tekrar göster
+        });
+
+        $(document).ready(function () {
+            function resetForms() {
+                console.log("Resetting forms...");
+                $("#txtcity, #txtdaynight, #txtprice, #txtcapacity, #txtcityid").val('');
+                $("#citylist, #getcitybyid, #addcityform, #deletecityform, #updatecityform").hide();
+            }
+
+            $("#btnupdatecity").off("click").on("click", function () {
+                resetForms();
+                $("#updatecityform").show();
+            });
+
+            $("#btndeletecity").off("click").on("click", function () {
+                resetForms();
+                $("#deletecityform").show();
+            });
+
+            $("#deletecityformbutton").off("click").on("click", function () {
+                let id = $("#txtcityid").val();
+
+                if (!id) {
+                    alert("Please enter a City ID to delete.");
+                    return;
+                }
+
+                $.ajax({
+                    url: "/Admin/City/DeleteCity/" + id,
+                    type: "POST",
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (response) {
+                        console.log("Delete response:", response);
+                        alert("City deleted successfully.");
+                        resetForms();
+                        $("#deletecityform").show();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error deleting city:", error);
+                        alert("Error deleting city: " + error);
+                    }
+                });
+            });
+        });
+
+        $("#btnupdatingcity").click(function () {
+            let values = {
+                DestinationID: $("#txtcityeditid").val(),
+                City: $("#txtcityname").val(),
+                DayNight: $("#txtcitdaynightname").val()
+            };
+            $.ajax({
+                type: "post",
+                url: "/Admin/City/UpdateCity/",
+                data: values,
+                success: function (fun4) {
+                    alert("Update operation completed");
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            function resetForms() {
+                console.log("Resetting forms...");
+                $("#txtcity, #txtdaynight, #txtprice, #txtcapacity, #txtcityeditid, #txtcityname, #txtcitdaynightname").val('');
+                $("#citylist, #getcitybyid, #addcityform, #deletecityform, #updatecityform").hide();
+            }
+
+            // Update City formunu göster ve inputları temizle
+            $("#btnupdatecity").off("click").on("click", function () {
+                resetForms(); // Tüm formları temizle
+                $("#updatecityform").show();
+            });
+
+            // Update işlemi için AJAX çağrısı
+            $("#btnupdatingcity").off("click").on("click", function () {
+                let values = {
+                    DestinationID: $("#txtcityeditid").val(),
+                    City: $("#txtcityname").val(),
+                    DayNight: $("#txtcitdaynightname").val()
+                };
+
+                if (!values.DestinationID || !values.City || !values.DayNight) {
+                    alert("All fields must be filled for update.");
+                    return;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/City/UpdateCity/",
+                    data: values,
+                    success: function (response) {
+                        alert("City updated successfully.");
+                        resetForms();
+                        $("#updatecityform").show();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error updating city:", error);
+                        alert("Update failed: " + error);
+                    }
+                });
+            });
+        });
+
+
+    });
+</script> 
+
+
