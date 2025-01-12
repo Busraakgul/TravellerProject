@@ -1,7 +1,5 @@
 # Traveller's Path Project
 
-# Traveller's Path
-
 Traveller's Path is a web-based application designed to streamline the travel experience by allowing users to explore destinations, manage reservations, and track their travel history. Built with modern web development practices, it provides an intuitive interface for both administrators and users to interact with the platform seamlessly.
 
 ## Features
