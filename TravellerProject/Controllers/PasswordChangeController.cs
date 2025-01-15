@@ -46,7 +46,7 @@ namespace TravellerProject.Controllers
                 }, HttpContext.Request.Scheme);
 
                 MimeMessage mimeMessage = new MimeMessage();
-                MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "alyalfea3007@gmail.com");
+                MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "SenderMail");
                 mimeMessage.From.Add(mailboxAddressFrom);
 
                 MailboxAddress mailAddressTo = new MailboxAddress("User", forgetPasswordViewModel.Mail);
@@ -62,7 +62,7 @@ namespace TravellerProject.Controllers
                 using (SmtpClient smtpClient = new SmtpClient())
                 {
                     smtpClient.Connect("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
-                    smtpClient.Authenticate("alyalfea3007@gmail.com", "ejehnmpfjyiwgnyq");
+                    smtpClient.Authenticate("SenderMail", "aaaaaaaaaaaaaa");
                     smtpClient.Send(mimeMessage);
                     smtpClient.Disconnect(true);
 
