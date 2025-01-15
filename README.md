@@ -1,76 +1,3 @@
-# Traveller's Path Project
-
-Traveller's Path is a web-based application designed to streamline the travel experience by allowing users to explore destinations, manage reservations, and track their travel history. Built with modern web development practices, it provides an intuitive interface for both administrators and users to interact with the platform seamlessly.
-
-## Features
-
-### User Features
-- **Explore Destinations**: View and explore a curated list of travel destinations with detailed information.
-- **User Authentication**: Secure user registration, login, and logout functionalities.
-- **Manage Reservations**: Users can book, view, and cancel their travel reservations.
-- **Comments**: Add, view, and manage comments on destinations.
-- **Travel History**: View previous reservations and trips.
-
-### Admin Features
-- **User Management**: Admins can view, edit, and delete user profiles.
-- **Reservation Management**: Admins can manage user reservations and approve/reject bookings.
-- **Comment Moderation**: Admins have the ability to review and moderate comments on destinations.
-- **Destination Management**: Add, update, or remove destinations to keep the platform updated.
-
-## Technologies Used
-
-- **Frontend**: 
-  - HTML, CSS, JavaScript
-  - Bootstrap for responsive design
-
-- **Backend**: 
-  - ASP.NET Core - (Model-View-Controller)
-  - Entity Framework Core
-  - .NET 8.0
-
-- **Database**:
-  - Microsoft SQL Server
-  - PostgreSQL
-
-- **Version Control**:
-  - Git and GitHub for repository management
-
-## Installation
-
-Follow the steps below to set up and run the TravellersPath application locally:
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Busraakgul/TravellerProject.git
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
 # 🌍 Traveller's Path Project
 
 **Traveller's Path** is a web-based application designed to streamline the travel experience. With features for exploring destinations, managing reservations, and tracking travel history, this project ensures a seamless user experience for both travelers and administrators.
@@ -104,15 +31,33 @@ Follow the steps below to set up and run the TravellersPath application locally:
 
 ## 🖥️ **Dashboard Previews**
 
-### 1️⃣ User Dashboard
-![User Dashboard](https://github.com/Busraakgul/TravellerProject/raw/main/Page%20Images/user-dashboard.png)
+
+### 1️⃣ SignUp 
+![SignUp](https://github.com/user-attachments/assets/a01e3235-e02b-45b0-bc65-d80212858e1b)
+
+### 1️⃣ SignIn 
+![SignIn](https://github.com/user-attachments/assets/c58ca4a9-0ed0-4456-a73f-a67925211f2a)
+
+### 1️⃣ Default/Index
+![Default-Index Page](https://github.com/user-attachments/assets/70aa6365-bc2b-4f61-aa5a-5c3e7debb2ae)
+
+### 1️⃣ Member Dashboard
+![Member Dashboard](https://github.com/user-attachments/assets/66ffd92a-7a9c-458e-b48f-549c16642a9e)
 
 ### 2️⃣ Admin Dashboard
-![Admin Dashboard](https://github.com/Busraakgul/TravellerProject/raw/main/Page%20Images/admin-dashboard.png)
-https://github.com/Busraakgul/TravellerProject/blob/main/Page%20Images/ActiveReservations.jpg?raw=true
+![Admin](https://github.com/user-attachments/assets/668831e9-f528-45fc-afdc-1a0f2f0b79c3)
 
-### 3️⃣ Destination Management
-![Destination Management](https://github.com/Busraakgul/TravellerProject/raw/main/Page%20Images/destination-management.png)
+### 3️⃣ Destinations
+![LastDestinations](https://github.com/user-attachments/assets/4668cd7b-a140-45ec-b649-65d29864bf1f)
+
+### 3️⃣ Active Destinations
+![ActiveReservations](https://github.com/user-attachments/assets/4c9f6272-d24a-418c-a274-f3b9568ddfd4)
+
+### 3️⃣ Cities
+![city](https://github.com/user-attachments/assets/e2f41ff5-cd10-4668-b7c8-43229fcf03e1)
+
+### 3️⃣ Announcements
+![ActiveReservations](https://github.com/user-attachments/assets/4c9f6272-d24a-418c-a274-f3b9568ddfd4)
 
 ---
 
@@ -163,8 +108,3 @@ For any queries or feedback, feel free to reach out!
 ---
 
 Enjoy exploring **Traveller's Path**! 🧳✈️🌍
-
-
-![ActiveReservations](https://github.com/user-attachments/assets/4c9f6272-d24a-418c-a274-f3b9568ddfd4)
-
-
