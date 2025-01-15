@@ -6,7 +6,7 @@
 
 ## 🎯 **Features**
 
-### 🧳 **User Features**
+### 🧳 **Member Features**
 - 🔍 **Explore Destinations**: Discover a curated list of destinations with detailed information.
 - 🔐 **User Authentication**: Secure user registration, login, and logout functionalities.
 - 📅 **Manage Reservations**: Book, view, and cancel reservations.
@@ -35,28 +35,28 @@
 ### 1️⃣ SignUp 
 ![SignUp](https://github.com/user-attachments/assets/a01e3235-e02b-45b0-bc65-d80212858e1b)
 
-### 1️⃣ SignIn 
+### 2️⃣ SignIn 
 ![SignIn](https://github.com/user-attachments/assets/c58ca4a9-0ed0-4456-a73f-a67925211f2a)
 
-### 1️⃣ Default/Index
+### 3️⃣ Default/Index
 ![Default-Index Page](https://github.com/user-attachments/assets/70aa6365-bc2b-4f61-aa5a-5c3e7debb2ae)
 
-### 1️⃣ Member Dashboard
+### 4️⃣ Member Dashboard
 ![Member Dashboard](https://github.com/user-attachments/assets/66ffd92a-7a9c-458e-b48f-549c16642a9e)
 
-### 2️⃣ Admin Dashboard
+### 5️⃣ Admin Dashboard
 ![Admin](https://github.com/user-attachments/assets/668831e9-f528-45fc-afdc-1a0f2f0b79c3)
 
-### 3️⃣ Destinations
+### 6️⃣ Destinations
 ![LastDestinations](https://github.com/user-attachments/assets/4668cd7b-a140-45ec-b649-65d29864bf1f)
 
-### 3️⃣ Active Destinations
+### 7️⃣ Active Destinations
 ![ActiveReservations](https://github.com/user-attachments/assets/4c9f6272-d24a-418c-a274-f3b9568ddfd4)
 
-### 3️⃣ Cities
+### 8️⃣ Cities
 ![city](https://github.com/user-attachments/assets/e2f41ff5-cd10-4668-b7c8-43229fcf03e1)
 
-### 3️⃣ Announcements
+### 9️⃣ Announcements
 ![ActiveReservations](https://github.com/user-attachments/assets/4c9f6272-d24a-418c-a274-f3b9568ddfd4)
 
 ---
@@ -94,12 +94,7 @@ Follow these steps to run the project locally:
    ```
 
 7. Access the app at `http://localhost:5000` in your browser.
-
----
-
-## 🛡️ **License**
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
+   
 ---
 
 ## 📫 **Contact**
